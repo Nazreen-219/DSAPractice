@@ -30,6 +30,14 @@ Node* buildTree(vector<int> preorder){
     return root;
 
 }
+int count (Node* root){
+    if(root == NULL) return 0;
+
+    int leftcount = count(root->left);
+    int rightcount = count(root->right);
+
+    return leftcount + rightcount +1 ;
+}
 
 int height (Node* root){
     if(root == NULL) return 0;
@@ -47,7 +55,11 @@ int main(){
     int ht = height(root);
     cout<<"data is "<<root->data<<endl;
 
-    cout<<"height if tree is "<<ht;
+    cout<<"height if tree is "<<ht<<endl;
+
+    int countOfNodes = count(root);
+
+    cout<<"the count of Nodes is " <<countOfNodes<<endl;
 
     return 0;
 }
